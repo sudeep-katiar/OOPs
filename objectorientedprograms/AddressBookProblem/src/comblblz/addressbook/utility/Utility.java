@@ -1,4 +1,4 @@
-package com.blblz.inventorymanagement.utility;
+package comblblz.addressbook.utility;
 
 import java.util.Random;
 import java.util.Scanner;
