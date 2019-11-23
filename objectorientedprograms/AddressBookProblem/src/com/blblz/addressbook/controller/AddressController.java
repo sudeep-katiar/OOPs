@@ -1,5 +1,13 @@
 package com.blblz.addressbook.controller;
 
-public class AddressController {
+import com.blblz.addressbook.service.AddressService;
+import com.blblz.addressbook.serviceimplementation.AddressServiceImplementation;
 
+public class AddressController {
+	public static void main(String[] args) {
+		AddressService details = new AddressServiceImplementation();
+		details.defaultAddress();
+		details.readAddress();
+		details.addAddress();
+	}
 }
