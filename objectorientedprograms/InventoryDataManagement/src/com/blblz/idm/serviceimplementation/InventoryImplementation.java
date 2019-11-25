@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,84 +15,77 @@ import com.blblz.idm.service.DataInventoryService;
 import com.blblz.idm.util.Utility;
 
 public class InventoryImplementation implements DataInventoryService {
-	 Utility utility = new Utility();
-	 String path="/home/admin1/bridgelabz/objectorientedprograms/InventoryDataManagement/DataManagement.json";
-	 
-	 @SuppressWarnings({ "unchecked", "unused"})
-	public void defaultInventory()
-		{
-			JSONObject obj1 = new JSONObject();
-			
-			JSONArray list = new JSONArray();
-			//first item
-			obj1.put("Name", "Basmati");
-			obj1.put("Weight", "10");
-			obj1.put("Price:", "100");
-			JSONObject type1 = new JSONObject();
-			type1.put("Rice", obj1);
-			//second item
-			JSONObject obj2 = new JSONObject();
-			obj2.put("Name", "Dumur");
-			obj2.put("Weight", "20");
-			obj2.put("Price:", "500");
-			JSONObject type2 = new JSONObject();
-			type2.put("Wheat", obj2);
-			
-			//third item
-			JSONObject obj3 = new JSONObject();
-			obj3.put("Name", "Peas");
-			obj3.put("Weight", "30");
-			obj3.put("Price:", "1000");
-			JSONObject type3 = new JSONObject();
-			type3.put("Pulses", obj3);
-			
-			 //Add items to list
-	        JSONArray items = new JSONArray();
-	        items.add(type1);
-	        items.add(type2);
-	        items.add(type3);
-			
-			try(FileWriter file = new FileWriter("DataManagement.json"))
-			{
-				file.write(items.toJSONString());
-				file.flush();
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-			System.out.println(items);
+	Utility utility = new Utility();
+	String path = "/home/admin1/bridgelabz/objectorientedprograms/InventoryDataManagement/DataManagement.json";
+
+	@SuppressWarnings({ "unchecked", "unused" })
+	public void defaultInventory() {
+		JSONObject obj1 = new JSONObject();
+
+		JSONArray list = new JSONArray();
+		// first item
+		obj1.put("Name", "Rice");
+		obj1.put("Weight", 10.0);
+		obj1.put("Price", 100.0);
+		JSONObject type1 = new JSONObject();
+		type1.put("Item", obj1);
+		// second item
+		JSONObject obj2 = new JSONObject();
+		obj2.put("Name", "Wheat");
+		obj2.put("Weight", 20.0);
+		obj2.put("Price", 500.0);
+		JSONObject type2 = new JSONObject();
+		type2.put("Item", obj2);
+
+		// third item
+		JSONObject obj3 = new JSONObject();
+		obj3.put("Name", "Pulses");
+		obj3.put("Weight", 30.0);
+		obj3.put("Price", 1000.0);
+		JSONObject type3 = new JSONObject();
+		type3.put("Item", obj3);
+
+		// Add items to list
+		JSONArray items = new JSONArray();
+		items.add(type1);
+		items.add(type2);
+		items.add(type3);
+
+		try (FileWriter file = new FileWriter("DataManagement.json")) {
+			file.write(items.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	 
-	 /**
-	  * Takes user input and writes data to JSON object and object to file
-	  */
+		System.out.println(items);
+	}
+
+	/**
+	 * Takes user input and writes data to JSON object and object to file
+	 */
 //	@SuppressWarnings({ "static-access", "unchecked" })
 	@SuppressWarnings({ "unchecked", "static-access" })
-	public  InventoryDetails addInventory()
-	 {
+	public InventoryDetails addInventory() {
 		InventoryDetails inventory = new InventoryDetails();
-		String[] names=new String[] {"rice", "wheat", "pulses"};
+		String[] names = new String[] { "Item" };
 		JSONObject finalObject = new JSONObject();
-		for(String name: names)
-		{
+		for (String name : names) {
 			System.out.print("Enter number of types of " + name + " : ");
-			int count = utility.inputInteger();	//	types of every inventory
-			JSONArray array = new JSONArray();	//	array to store types
-			
-			for(int i = 0; i < count; i++) 
-			{	//	 object for every type
-				JSONObject jsonObject  = new JSONObject();
+			int count = utility.inputInteger(); // types of every inventory
+			JSONArray array = new JSONArray(); // array to store types
+
+			for (int i = 0; i < count; i++) { // object for every type
+				JSONObject jsonObject = new JSONObject();
 				System.out.print("Enter name, weight and price: ");
-				jsonObject.put("name", utility.inputString());
-				jsonObject.put("weight", utility.inputDouble());
-				jsonObject.put("price", utility.inputDouble());
+				jsonObject.put("Name", utility.inputString());
+				jsonObject.put("Weight", utility.inputDouble());
+				jsonObject.put("Price", utility.inputDouble());
 				array.add(jsonObject);
-				
+
 			}
-			finalObject.put(name , array);
+			finalObject.put(name, array);
 		}
-		try(PrintWriter printWriter = new PrintWriter(path)) {
+		try (PrintWriter printWriter = new PrintWriter(path)) {
 			printWriter.write(finalObject.toJSONString());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -102,7 +93,7 @@ public class InventoryImplementation implements DataInventoryService {
 		System.out.println("Enter the product name: ");
 		inventory.setName(utility.inputString());
 		inventory.getName();
-		
+
 		System.out.println("Enter the weight");
 		inventory.setWeight(utility.inputDouble());
 		inventory.getWeight();
@@ -110,90 +101,69 @@ public class InventoryImplementation implements DataInventoryService {
 		System.out.println("Enter the Price");
 		inventory.setPrice(utility.inputDouble());
 		inventory.getPrice();
-		
+
 		return inventory;
 	}
-	
+
 	/**
-	 * reads data from JSON file and 
-	 * prints inventory value of Rice, Pulses and Wheat
+	 * reads data from JSON file and prints inventory value of Rice, Pulses and
+	 * Wheat
 	 */
-	 @SuppressWarnings("unchecked")
-	 
-		public void readInventory() {
-			JSONParser parser = new JSONParser();
-			
-			try
-			{
-				Object obj = parser.parse(new FileReader("/home/admin1/bridgelabz/objectorientedprograms/InventoryDataManagement/DataManagement.json"));
-				JSONArray jsonArray = (JSONArray)obj;
-				
-				System.out.println("jsonArray :"+jsonArray);
-				Iterator<?> iterator = jsonArray.iterator();
-				while(iterator.hasNext()) {
-					JSONObject jsonObject = (JSONObject) iterator.next();
-					JSONObject jsonObject2 = (JSONObject) jsonObject.get("Rice");
-					double weight = (double) jsonObject2.get("Price");
-					double price = (double) jsonObject2.get("Weight");
-					double value = weight*price;
-					System.out.println("Rice Inventory value :"+value);
-				}
-				
-				//loop array
-			/*
-			 * JSONArray riceArray = (JSONArray) jsonObject.get("Rice"); Iterator<String>
-			 * iterator = riceArray.iterator();
-			 * 
-			 * while(iterator.hasNext()) { System.out.println("Rice: "+iterator.next()); }
-			 * 
-			 * JSONArray wheatArray = (JSONArray) jsonObject.get("Wheat"); Iterator<String>
-			 * iterator1 = wheatArray.iterator();
-			 * 
-			 * while(iterator1.hasNext()) { System.out.println("Wheat: "+iterator1.next());
-			 * }
-			 * 
-			 * JSONArray pulsesArray = (JSONArray) jsonObject.get("Pulses");
-			 * Iterator<String> iterator2 = pulsesArray.iterator();
-			 * 
-			 * while(iterator2.hasNext()) { System.out.println("Pulses: "+iterator2.next());
-			 * }
-			 */
-			}
-			catch(FileNotFoundException e)
-			{
-				e.printStackTrace();
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-			catch(ParseException e)
-			{
-				e.printStackTrace();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-	 	}
-	
-	/**
-	* array - JSON array
-	* get value of given inventory array
-	*/
-	
-	public double getValue(JSONArray array)
-	{
-		Iterator<?> iterator = array.iterator();	//	iterator to iterate
-		double value = 0;	//	inventory value
-		
-		while(iterator.hasNext())
-		{
-			JSONObject obj = (JSONObject)iterator.next();
-			double weight = (double)obj.get("Weight");
-			double price = (double)obj.get("Price");
-			value = value + weight * price;	//	adding value
+	@SuppressWarnings("unchecked")
+	public void readInventory() {
+
+		// JSON parser object to parse read file
+		JSONParser jsonParser = new JSONParser();
+
+		try (FileReader reader = new FileReader(
+				"/home/admin1/bridgelabz/objectorientedprograms/InventoryDataManagement/DataManagement.json")) {
+			// Read JSON file
+			Object obj = jsonParser.parse(reader);
+
+			JSONArray allItems = (JSONArray) obj;
+			System.out.println(allItems);
+
+			// Iterate over all items array
+			allItems.forEach(emp -> parseItemObject((JSONObject) emp));
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
+	}
+
+	public void parseItemObject(JSONObject item) {
+		// Get item object within list
+		JSONObject itemObject = (JSONObject) item.get("Item");
+
+		// Get item type
+		String name = (String) itemObject.get("Name");
+		System.out.println(name);
+
+		// Get item weight
+		Double weight = (Double) itemObject.get("Weight");
+		System.out.println(weight);
+
+		// Get item price
+		Double price = (Double) itemObject.get("Price");
+		System.out.println(price);
+
+		double value = getValue(weight, price);
+		System.out.println("total Value :" + value);
+
+	}
+
+	/**
+	 * array - JSON array get value of given inventory array
+	 */
+
+	public double getValue(double weight, double price) {
+		double value = 0.0;
+		value = value + (weight * price);
 		return value;
 	}
+
 }

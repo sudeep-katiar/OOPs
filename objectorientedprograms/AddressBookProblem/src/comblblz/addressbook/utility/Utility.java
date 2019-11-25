@@ -1,109 +1,92 @@
 package comblblz.addressbook.utility;
 
-import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+
+import com.blblz.addressbook.controller.AddressController;
 
 public class Utility {
-	static Scanner scanner = new Scanner(System.in);
-	static Random random = new Random();
+	static Scanner sc = new Scanner(System.in);
+	static String inputString = "";
+	static boolean flag = false;
 
-	/*
-	 * Return Input Integer
-	 */
-	public static int inputInteger() {
+	public static String getString(boolean details) {
+		inputString = "";
+		while (inputString.equals("")) {
+			sc.reset();
+			inputString = sc.nextLine();
+			if (!details) {
+				if (!Pattern.matches("\\D*[^\\s]", inputString)) {
+					System.out.println("Please enter valid String");
+					AddressController.addUser();
+					inputString = "";
+				}
+			}
+		}
+		return inputString;
+	}
+
+	public static int inputinteger() {
 		try {
-			return scanner.nextInt();
+			return sc.nextInt();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return 0;
 	}
 
-	/*
-	 * Return Input Double
-	 */
-	public static double inputDouble() {
-		try {
-			return scanner.nextDouble();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0.0;
-	}
-
-	/*
-	 * Return Input String
-	 */
 	public static String inputString() {
 		try {
-			return scanner.next();
+			return sc.nextLine();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return null;
+		return "";
 	}
 
-	/*
-	 * Return Input String
-	 */
-	public static String inputStringLine() {
+	public static long inputLong() {
 		try {
-			return scanner.nextLine();
+			return sc.nextLong();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return null;
+		return 0;
 	}
 
-	/*
-	 * Return Input Float
-	 */
-	public static float inputFloat() {
-		try {
-			return scanner.nextFloat();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0L;
-	}
-
-	/*
-	 * Return Input Boolean
-	 */
-	public static boolean inputBoolean() {
-		try {
-			return scanner.nextBoolean();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return false;
-	}
-
-	/*
-	 * Check User Input Value is Number
-	 */
-	public static boolean checkNumber(int userNumber) {
-		if (userNumber >= '0' && userNumber <= '9') {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/*
-	 * Check User Input Value is String
-	 */
-	public static boolean checkString(String userString) {
-		char ch[] = userString.toCharArray();
-		for (int i = 0; i < ch.length; i++) {
-			if (ch[i] >= 'a' && ch[i] <= 'z' || ch[i] >= 'A' && ch[i] <= 'Z')
+	@SuppressWarnings("unused")
+	public static boolean stringChecker(String str) {
+		char[] ch = str.toCharArray();
+		String temp = "";
+		Predicate<Character> p = s -> s >= 97 && s <= 122 || s >= 65 && s <= 90 || s >= 48 && s <= 57;
+		for (char i : ch) {
+			if (p.test(i)) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	/*
-	 * Selection of a valid option
+	 * Integer check
+	 */
+	public static boolean checkInteger(String number) {
+		char ch[] = number.toCharArray();
+		for (int i = 0; i < ch.length; i++) {
+			if (ch[i] >= 48 && ch[i] <= 57) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/*
+	 * @param-type: integer
+	 * 
+	 * @return-type: boolean
+	 * 
 	 */
 	public boolean validOption(int option) {
 		if (option == 1 || option == 2 || option == 3)
@@ -111,10 +94,23 @@ public class Utility {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		System.out.println("Enter name");
-		String name = inputStringLine();
-		System.out.println(name);
-	}
+	/*
+	 * public static JSONObject readData() { JSONParser jsonParser = new
+	 * JSONParser(); JSONObject jsonObject = new JSONObject(); try { jsonObject =
+	 * (JSONObject) jsonParser.parse(new FileReader("inventory.json")); //
+	 * System.out.println("Data from utility :"+jsonObject); } catch
+	 * (FileNotFoundException e) { e.printStackTrace(); } catch (IOException e) {
+	 * e.printStackTrace(); } catch (ParseException e) { e.printStackTrace(); }
+	 * return jsonObject; }
+	 */
 
+	public static FileWriter fileWriterObject() {
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter("JsonFile");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return fileWriter;
+	}
 }

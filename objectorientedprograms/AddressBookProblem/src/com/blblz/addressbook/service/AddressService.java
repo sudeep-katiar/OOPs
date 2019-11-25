@@ -1,14 +1,25 @@
 package com.blblz.addressbook.service;
 
-import org.json.simple.JSONArray;
+import java.io.File;
 
-import com.blblz.addressbook.model.AddressModel;
+import org.json.simple.JSONObject;
+
+import com.blblz.addressbook.model.PersonModel;
 
 public interface AddressService {
 
-	public void defaultAddress();
+	public void store(PersonModel person);
 
-	public JSONArray readAddress();
+	public void edit(File file, String name);
 
-	public AddressModel addAddress();
+	public void delete(File file, String name);
+
+	public JSONObject search(File file, String name);
+
+	public void addAddressBook(String name);
+
+	public void deleteAddressBook(String name);
+
+	public File listOfFiles();
+
 }

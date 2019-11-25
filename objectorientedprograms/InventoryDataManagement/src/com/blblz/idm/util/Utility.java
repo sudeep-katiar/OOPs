@@ -4,13 +4,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Utility {
-	static Scanner scanner;
-	static Random random;
-	
-	public Utility() {
-		scanner = new Scanner(System.in);
-		random = new Random();
-	}
+	static Scanner scanner = new Scanner(System.in);
+	static Random random = new Random();
 
 	/*
 	 * Return Input Integer
@@ -106,6 +101,5 @@ public class Utility {
 		}
 		return false;
 	}
-
 
 }

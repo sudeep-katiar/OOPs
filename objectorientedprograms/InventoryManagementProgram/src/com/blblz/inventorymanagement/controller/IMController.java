@@ -9,5 +9,6 @@ public class IMController {
 		details.defaultInventory();
 		details.readInventory();
 		details.addInventory();
+		details.readInventory();
 	}
 }

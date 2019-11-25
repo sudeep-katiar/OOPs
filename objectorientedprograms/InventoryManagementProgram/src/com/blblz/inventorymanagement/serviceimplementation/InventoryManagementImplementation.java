@@ -18,7 +18,7 @@ public class InventoryManagementImplementation implements InventoryManagementSer
 	public void defaultInventory() {
 		JSONObject obj1 = new JSONObject();
 
-		JSONArray list = new JSONArray();
+//		JSONArray list = new JSONArray();
 		// first item
 		obj1.put("Name", "Rice");
 		obj1.put("Weight", 10.0);
@@ -77,16 +77,22 @@ public class InventoryManagementImplementation implements InventoryManagementSer
 				jsonObject.put("Name", utility.inputString());
 				jsonObject.put("Weight", utility.inputDouble());
 				jsonObject.put("Price", utility.inputDouble());
-				array.add(jsonObject);
-				finalObject.put("Item", array);
+				
+				JSONObject objOne=new JSONObject();
+				objOne.put("Item", jsonObject);
+				
+				array.add(objOne);
+				
 				choice--;
-			}
-		}
+		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter("InventoryManagement.json"))) {
 			br.write(array.toJSONString());
 			System.out.println(array);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+			}
 		}
 //		System.out.println("Enter the product name: ");
 //		inventory.setName(utility.inputString());
@@ -124,7 +130,7 @@ public class InventoryManagementImplementation implements InventoryManagementSer
 			Object obj = jsonParser.parse(reader);
 
 			JSONArray allItems = (JSONArray) obj;
-			System.out.println(allItems);
+//			System.out.println(allItems);
 
 			// Iterate over all items array
 			allItems.forEach(emp -> parseItemObject((JSONObject) emp));
