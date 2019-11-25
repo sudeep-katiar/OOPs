@@ -1,5 +1,7 @@
 package com.blblz.stockmanagement.service;
 
-public class StockService {
+public interface StockService {
+	public void add(String stockname, int numberofshare, long stockprice);
+	public void stockreport();
 
 }
