@@ -41,63 +41,7 @@ public class StockServiceImplementation implements StockService {
 			e.printStackTrace();
 		}
 		System.out.println(object.toString());
-	}
-
-	
-//	public void add() 
-//	{
-////		StockRepository stockread=new StockRepository();
-////		stockread.json();
-//		StockModel model=new StockModel();
-//		
-//		
-//		try {
-//			JSONObject object=new JSONObject();
-//			JSONParser parser =new JSONParser();
-//			
-//			FileReader read=new FileReader("jsonfolder/stock.json");
-//			JSONObject obj=(JSONObject) parser.parse(read);
-//			System.out.println(obj);
-//			
-//			
-//		System.out.println("enter name");
-//		String stockname = Utility.inputString();
-//		model.setStockname(stockname);
-//		String stockName=model.getStockname();
-//		object.put("stockname",stockname);
-//		
-//		System.out.println("enter number of shares");
-//		int numberofshare = Utility.inputInteger();
-//		model.setNumberofshare(numberofshare);
-//		int noOfShare=model.getNumberofshare();
-//		object.put("numberofshare",noOfShare);
-//		
-//		System.out.println("enter share price ");
-//		long stockprice = Utility.inputLong();
-//		model.setShareprice(stockprice);
-//		long stockPrice=model.getShareprice();
-//		object.put("stockprice",stockPrice);
-//		
-//		
-//		PrintWriter pw = new PrintWriter("jsonfolder/stock.json");
-//			pw.write(object.toString());
-//			pw.flush();
-//			
-//			FileReader read1=new FileReader("jsonfolder/stock.json");
-//			JSONObject obj1=(JSONObject) parser.parse(read1);
-//			System.out.println(obj1);
-//			
-//		PrintWriter pw1 = new PrintWriter("jsonfolder/stock.json");
-//				pw1.write(object.toString());
-//				pw1.write(obj1.toJSONString());
-//				pw1.flush();
-//			
-//		} catch (IOException | ParseException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-	
+	}	
 	
 	@SuppressWarnings("rawtypes")
 	public void stockreport() {
@@ -120,5 +64,31 @@ public class StockServiceImplementation implements StockService {
 		}
 
 	}
-
+	
+	public double valueOf()
+	{
+		
+		return n;
+		
+	}
+	
+	public void buy(int amount, String symbol)
+	{
+		
+	}
+	
+	public void sell(int amount, String symbol)
+	{
+		
+	}
+	
+	public void save(String filename)
+	{
+		
+	}
+	
+	public void printReport()
+	{
+		
+	}
 }
