@@ -10,19 +10,19 @@ import org.json.simple.parser.ParseException;
 
 public class StockRepository {
 	// jsonfile reader
-		public static JSONObject json() {
-			// first we create JSONparse
-			JSONParser jsonparse = new JSONParser();
-			try (FileReader fr = new FileReader("/home/admin1/bridgelabz/objectorientedprograms/StockAccountManagement/src/com/blblz/stockmanagement/stockjson.json");
-					BufferedReader br = new BufferedReader(fr)) {
-				return (JSONObject) jsonparse.parse(br);
-				//it will parse JSONObject
-			} catch (IOException | ParseException e) {
-				e.printStackTrace();
-
-			}
-			return null;
+	public static JSONObject json() {
+		// first we create JSONparse
+		JSONParser jsonparse = new JSONParser();
+		try (BufferedReader fr = new BufferedReader(new FileReader("jsonfolder/stock.json"));
+				BufferedReader br = new BufferedReader(fr)) {
+			return (JSONObject) jsonparse.parse(br);
+			// it will parse JSONObject
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
 
 		}
+		return null;
+
+	}
 
 }

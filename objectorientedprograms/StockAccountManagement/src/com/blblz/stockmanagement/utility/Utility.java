@@ -117,4 +117,13 @@ public class Utility {
 		System.out.println(name);
 	}
 
+	public static long inputLong() {
+		try {
+			return scanner.nextLong();
+		}catch(Exception e)
+		{
+			System.out.println("Invalied Input");
+		}
+		return 0;
+	}
 }
