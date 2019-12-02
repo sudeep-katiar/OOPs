@@ -1,0 +1,57 @@
+package com.blblz.clinique.model;
+
+public class Appointment {
+	private String doctorName;
+	private String patientName;
+	private String date;
+	private int docAppointmentCount;
+	private int setDocAppointmentCount;
+
+	public Appointment(String docName, String patientName, String date, int docCount) {
+		this.setDoctorName(docName);
+		this.setPatientName(patientName);
+		this.setDate(date);
+		this.setDocAppointmentCount = docCount;
+	}
+
+	public String getDoctorName() {
+		return doctorName;
+	}
+
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getDocAppointmentCount() {
+		return docAppointmentCount;
+	}
+
+	public void setDocAppointmentCount(int docAppointmentCount) {
+		this.docAppointmentCount = docAppointmentCount;
+	}
+
+	public int getSetDocAppointmentCount() {
+		return setDocAppointmentCount;
+	}
+
+	public void setSetDocAppointmentCount(int setDocAppointmentCount) {
+		this.setDocAppointmentCount = setDocAppointmentCount;
+	}
+
+}

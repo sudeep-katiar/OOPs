@@ -1,0 +1,10 @@
+{ "Stock":{
+	"stockname": "s",
+	"stockprice": 1,
+	"numberofshareF": 1
+}
+}{
+	"stockname": "s",
+	"stockprice": 1,
+	"numberofshare": 1
+}

@@ -7,7 +7,7 @@ public class DeckImpl implements DeckInterface{
 	String[] Ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 	int n = Suits.length * Ranks.length;
 	String[] deck = new String[n];
-
+	
 	@Override
 	public void intializeCard() {
 		for (int i = 0; i < Ranks.length; i++) {

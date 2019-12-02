@@ -1,0 +1,53 @@
+package com.blblz.addressbook.controller;
+
+import com.blblz.addressbook.service.AddressService;
+import com.blblz.addressbook.serviceimplementation.AddressServiceImplementation;
+import com.blbz.addressbook.repository.AddressRespository;
+
+import comblblz.addressbook.utility.Utility;
+
+public class AddressController {
+	static Utility utility = new Utility();
+	static AddressService bookService = new AddressServiceImplementation();
+	static AddressRespository bookRepository = new AddressRespository();
+	static String name;
+	public static void main(String[] args) {
+		AddressService details = new AddressServiceImplementation();
+		details.defaultAddress();
+		details.readAddress();
+		details.addData();
+		details.readAddress();
+		
+	}
+
+//	public static void addressMenu() {
+//		System.out.println("1. Add Address Book");
+//		System.out.println("2. Delete Address Book");
+//		System.out.println("3. Select Address Book");
+//
+//		String select = Utility.inputString();
+//		if (Utility.checkString(select)) {
+//			switch (select) {
+//			case "1":
+//				System.out.println("Enter Address Book Name");
+//				name = Utility.inputString();
+//				bookService.addAddressBook(name);
+//				addressBookMenu();
+//				break;
+//			case "2":
+//				System.out.println("Enter Address Book Name");
+//				name = Utility.inputString();
+//				bookService.deleteAddressBook(name);
+//				addressBookMenu();
+//				break;
+//			case "3":
+//				File file = bookService.listOfFiles();
+//				// System.out.println("Controller :"+file);
+//				personMenu(file);
+//				break;
+//			default:
+//				break;
+//			}
+//		}
+//	}
+}

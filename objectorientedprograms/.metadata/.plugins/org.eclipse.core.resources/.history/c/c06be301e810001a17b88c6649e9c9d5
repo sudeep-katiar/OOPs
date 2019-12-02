@@ -1,0 +1,13 @@
+package com.blblz.clinique.service;
+
+public interface CliniqueService {
+	 int age=0;
+	  int id=0;
+	  String specilization="";
+	  String avl="";
+	  String name="";
+	  String doctorFile="";
+	  String patientFile="";
+	  String appointmentFile="";
+
+}

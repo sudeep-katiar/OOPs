@@ -13,7 +13,7 @@ import org.json.simple.parser.ParseException;
 public class AddressRespository {
 	static JSONParser jsonParser = new JSONParser();
 	static JSONObject jsonObject = new JSONObject();
-	static String path = "JsonFile/";
+//	static String path = "/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/addressbook.json";
 
 	/*
 	 * By using this method we write our user input data into the file as a json
@@ -26,7 +26,9 @@ public class AddressRespository {
 	 */
 	public static void writeData(JSONObject obj) {
 		try (FileWriter fileWriter = new FileWriter("addressbook.json")) {
+//			System.out.println(obj);
 			fileWriter.write(obj.toJSONString());
+
 			System.out.println("Data is added to the file!!!\n\n");
 			// AddressBookController.menu();
 		} catch (FileNotFoundException e) {

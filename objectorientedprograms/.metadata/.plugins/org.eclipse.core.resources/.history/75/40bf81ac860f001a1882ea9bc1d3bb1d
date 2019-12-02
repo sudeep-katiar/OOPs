@@ -1,0 +1,11 @@
+package com.blblz.stockmanagement.service;
+
+import java.io.File;
+
+import org.json.simple.JSONObject;
+
+public interface StockService {
+	public void writeDataNew(JSONObject jsonObject, File file);
+	public JSONObject readDataNew(File file2);
+
+}

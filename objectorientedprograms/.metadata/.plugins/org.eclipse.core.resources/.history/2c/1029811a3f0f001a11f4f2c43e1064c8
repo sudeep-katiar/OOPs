@@ -1,0 +1,14 @@
+package com.blblz.addressbook.controller;
+
+import com.blblz.addressbook.service.AddressService;
+import com.blblz.addressbook.serviceimplementation.AddressServiceImplementation;
+
+public class AddressController {
+	public static void main(String[] args) {
+		AddressService details = new AddressServiceImplementation();
+		details.defaultAddress();
+		details.readAddress();
+		details.addAddress();
+//		details.readAddress();
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"Stock": [
+		{
+			"stockname": "s",
+			"stockprice": 1,
+			"number of shares": 1
+		},
+		{
+			"total": 6,
+			"stock name": "HGSA",
+			"number of shares": 2,
+			"share price": 3
+		},
+		{
+			"total": 2999999700,
+			"stock name": "TATA",
+			"number of shares": 300,
+			"share price": 9999999
+		}
+	]
+}s

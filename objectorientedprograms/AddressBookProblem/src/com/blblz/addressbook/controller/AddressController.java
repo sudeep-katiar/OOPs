@@ -22,16 +22,7 @@ public class AddressController {
 		// AddressBookController.personMenu();
 
 	}
-
-	/*
-	 * public static void menu() { System.out.println("Please select a menu");
-	 * System.out.println("1.Address Book Manager");
-	 * System.out.println("2.Person Management");
-	 * 
-	 * String select = Utility.inputString(); if(Utility.stringChecker(select)) {
-	 * switch(select) { case "1": addressBookMenu(); break; case "2":
-	 * //personMenu(); break; } } }
-	 */
+	
 	public static void addressBookMenu() {
 		System.out.println("1. Add Address Book");
 		System.out.println("2. Delete Address Book");

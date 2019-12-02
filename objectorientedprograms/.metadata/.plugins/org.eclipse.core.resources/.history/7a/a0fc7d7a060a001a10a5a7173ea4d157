@@ -1,0 +1,14 @@
+package com.blblz.idm.jsonfile;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class JsonInventoryDataManagement {
+	public static void main(String[] args) {
+		JSONObject obj = new JSONObject();
+		obj.put("name", "Sudeep Katiar");
+		obj.put("location", "Bengaluru");
+		
+		JSONArray list = new JSONArray();
+	}
+}

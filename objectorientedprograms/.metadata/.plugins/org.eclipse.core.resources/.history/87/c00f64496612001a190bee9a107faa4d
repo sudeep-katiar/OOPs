@@ -1,0 +1,23 @@
+[
+	{
+		"Item": {
+			"Price": 100.0,
+			"Weight": 10.0,
+			"Name": "Rice"
+		}
+	},
+	{
+		"Item": {
+			"Price": 500.0,
+			"Weight": 20.0,
+			"Name": "Wheat"
+		}
+	},
+	{
+		"Item": {
+			"Price": 1000.0,
+			"Weight": 30.0,
+			"Name": "Pulses"
+		}
+	}
+]

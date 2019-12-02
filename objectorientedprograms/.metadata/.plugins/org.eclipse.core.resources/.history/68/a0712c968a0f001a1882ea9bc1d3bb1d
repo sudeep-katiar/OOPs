@@ -1,0 +1,32 @@
+package com.blblz.stockmanagement.controller;
+
+import java.util.Scanner;
+
+import com.blblz.stockmanagement.service.StockService;
+import com.blblz.stockmanagement.serviceimplementation.StockServiceImplementation;
+
+public class StockController {
+	public static void main(String[] args) {
+		StockService stock = new StockServiceImplementation();
+		Scanner enter = new Scanner(System.in);
+		System.out.println("please enter option.\n1. add stock \n2. caculate stock");
+		switch (enter.nextLine()) {
+		case "1":
+
+			System.out.println("enter name");
+			String Name = enter.nextLine();
+			System.out.println("enter number of shares");
+			int Share = enter.nextInt();
+			System.out.println("enter share price ");
+			int Price = enter.nextInt();
+			stock.add(Name, Price, Share);
+			break;
+		case "2":
+
+			System.out.println("stock report");
+			stock.stockreport();
+			break;
+		}
+	}
+
+}

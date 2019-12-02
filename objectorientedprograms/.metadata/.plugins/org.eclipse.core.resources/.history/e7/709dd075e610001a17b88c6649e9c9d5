@@ -1,0 +1,8 @@
+package com.blblz.clinique.serviceimplementation;
+
+import com.blblz.clinique.service.CliniqueService;
+
+public class CliniqueImplementation implements CliniqueService {
+	
+
+}

@@ -29,6 +29,21 @@ public class Utility {
 		return inputString;
 	}
 
+	public static long inputLong() {
+		try {
+			return sc.nextLong();
+		}catch(Exception e)
+		{
+			System.out.println("Invalied Input");
+		}
+		return 0;
+	}
+//	public static void main(String[] args) {
+//		System.out.println("1");
+//		long a=inputLong();
+//		System.out.println(a);
+//	}
+	
 	public static int inputinteger() {
 		try {
 			return sc.nextInt();
@@ -47,14 +62,14 @@ public class Utility {
 		return "";
 	}
 
-	public static long inputLong() {
-		try {
-			return sc.nextLong();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
-	}
+//	public static long inputLong() {
+//		try {
+//			return sc.nextLong();
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//		return 0;
+//	}
 
 	@SuppressWarnings("unused")
 	public static boolean stringChecker(String str) {

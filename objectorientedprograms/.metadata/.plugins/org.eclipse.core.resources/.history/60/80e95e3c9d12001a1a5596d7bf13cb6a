@@ -1,0 +1,29 @@
+package com.blblz.addressbook.model;
+
+public class Person {
+	private String fName;
+	private String lName;
+	private String address;
+	private String city;
+	private String state;
+	private long zip;
+	private long phno;
+	
+	public String getFName()
+	{
+		return fName;
+	}
+	public void setFName(String fname)
+	{
+		this.fName = fName;
+	}
+	public String getLName()
+	{
+		return lName;
+	}
+	public void getLName(String lName)
+	{
+		this.lName = lName;
+	}
+
+}

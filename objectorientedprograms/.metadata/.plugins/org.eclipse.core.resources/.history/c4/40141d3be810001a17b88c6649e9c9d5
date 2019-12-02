@@ -1,0 +1,59 @@
+package com.blblz.clinique.model;
+
+public class Doctor {
+	private String name;
+	private String specialization;
+	private int id;
+	private String avl;
+
+	public Doctor(String name2, int id2, String spl, String avl2) {
+
+	}
+
+	public Doctor(String name, String spl, int id, String avl) {
+		this.setName(name);
+		this.setSpecialization(spl);
+		this.setId(id);
+		this.setAvl(avl);
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%-15s %-10d %15s %15s\n", name, id, specialization, avl));
+
+		return sb.toString();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSpecialization() {
+		return specialization;
+	}
+
+	public void setSpecialization(String specialization) {
+		this.specialization = specialization;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAvl() {
+		return avl;
+	}
+
+	public void setAvl(String avl) {
+		this.avl = avl;
+	}
+
+}

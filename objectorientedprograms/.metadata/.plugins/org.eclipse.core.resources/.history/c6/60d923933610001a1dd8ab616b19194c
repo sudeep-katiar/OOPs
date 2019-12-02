@@ -1,0 +1,5 @@
+package com.blblz.stockmanagement.controller;
+
+public class StockAccount {
+
+}

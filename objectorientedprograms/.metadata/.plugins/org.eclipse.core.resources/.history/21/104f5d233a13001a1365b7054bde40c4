@@ -1,0 +1,5 @@
+package com.blblz.commercial.controller;
+
+public class StockReportController {
+
+}

@@ -1,0 +1,32 @@
+package com.blblz.idm.jsonfile;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class JsonInventoryDataManagement {
+	public static void main(String[] args) {
+		JSONObject obj = new JSONObject();
+		obj.put("name", "Sudeep Katiar");
+		obj.put("location", "Bengaluru");
+		
+		JSONArray list = new JSONArray();
+		list.add("Java");
+		list.add("JSP");
+		list.add("Servlets");
+		
+		obj.compute("courses", list);
+		
+		try(FileWriter file = new FileWriter("myJson.json"))
+		{
+			file.write(obj.toString());
+			file.flush();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		System.out.println(obj);
+	}
+}

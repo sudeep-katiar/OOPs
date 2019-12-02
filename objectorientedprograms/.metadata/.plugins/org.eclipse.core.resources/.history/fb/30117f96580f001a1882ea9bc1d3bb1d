@@ -1,0 +1,32 @@
+package com.blblz.addressbook.service;
+
+import java.io.File;
+
+import org.json.simple.JSONObject;
+
+import com.blblz.addressbook.model.AddressModel;
+
+public interface AddressService {
+
+	public void writeData(JSONObject obj);
+
+	public JSONObject readData();
+
+	public JSONObject readDataNew(File file2);
+
+	public void writeDataNew(JSONObject jsonObject, File file);
+
+	public void store(AddressModel person);
+
+	public void edit(File file, String name);
+
+	public void delete(File file, String name);
+
+	public JSONObject search(File file, String name);
+
+	public void addAddressBook(String name);
+
+	public void deleteAddressBook(String name);
+
+	public File listOfFiles();
+}

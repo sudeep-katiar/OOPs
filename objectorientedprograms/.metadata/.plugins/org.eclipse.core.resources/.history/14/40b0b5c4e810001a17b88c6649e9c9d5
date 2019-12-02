@@ -1,0 +1,5 @@
+package com.blblz.clinique.model;
+
+public class PatientDetails {
+
+}

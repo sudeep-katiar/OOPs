@@ -1,0 +1,32 @@
+package com.blblz.addressbook.repository;
+
+public class Connector {
+
+	Person details = new Person();
+	static ObjectMapper mapper;
+	static {
+		mapper = new ObjectMapper();
+	}
+	File file = new File("address.json");
+
+	/*
+	 * FOR READ THE FILE -------------------
+	 */
+	public List<Person> readFile() throws IOException {
+
+		List<Person> info = mapper.readValue(file, new TypeReference<List<Person>>() {
+		});
+
+		return info;
+
+	}
+	/*
+	 * FOR WRITE IN A FILE --------------------
+	 */
+
+	public void writeFile(List<Person> personlist) throws JsonGenerationException, JsonMappingException, IOException {
+		mapper.defaultPrettyPrintingWriter().writeValue(file, personlist);
+
+	}
+
+}

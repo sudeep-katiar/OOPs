@@ -1,0 +1,5 @@
+package com.blblz.addressbook.repository;
+
+public class Connector {
+
+}

@@ -1,0 +1,195 @@
+package com.blblz.addressbook.serviceimplementation;
+
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.blblz.addressbook.model.AddressModel;
+import com.blblz.addressbook.service.AddressService;
+
+import comblblz.addressbook.utility.Utility;
+
+public class AddressServiceImplementation implements AddressService {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void defaultAddress() {
+		JSONObject obj1 = new JSONObject();
+
+		obj1.put("FirstName", "Sudeep");
+		obj1.put("LastName", "Katiar");
+		obj1.put("Address", "Old airport road, Murgeshpallya");
+		obj1.put("City", "Bangalore");
+		obj1.put("State", "Karnataka");
+		obj1.put("Pincode", "560017");
+		obj1.put("Phone", "9876543210");
+
+		JSONObject type = new JSONObject();
+		type.put("AddressBook", obj1);
+
+		JSONArray addressbook = new JSONArray();
+		addressbook.add(type);
+
+		try (FileWriter file = new FileWriter("AddressBook.json")) {
+			file.write(addressbook.toJSONString());
+			file.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(addressbook);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public JSONArray readAddress() {
+
+		// JSON parser object to parse read file
+		JSONParser jsonParser = new JSONParser();
+		JSONArray array = new JSONArray();
+
+		try (FileReader reader = new FileReader(
+				"/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/AddressBook.json")) {
+			// Read JSON file
+			Object obj = jsonParser.parse(reader);
+
+			JSONArray arrayOne = (JSONArray) obj;
+			array = (JSONArray) obj;
+			System.out.println(array);
+			System.out.println(arrayOne);
+
+			// Iterate over all items array
+			arrayOne.forEach(emp -> parseItemObject((JSONObject) emp));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return array;
+	}
+
+	public void parseItemObject(JSONObject item) {
+		// Get Address Book within list
+		JSONObject itemObject = (JSONObject) item.get("AddressBook");
+
+		// Get First Name
+		String firstname = (String) itemObject.get("FirstName");
+		System.out.println(firstname);
+
+		// Get Last Name
+		String lastname = (String) itemObject.get("LastName");
+		System.out.println(lastname);
+
+		// Get Address
+		String address = (String) itemObject.get("Address");
+		System.out.println(address);
+
+		// Get City
+		String city = (String) itemObject.get("City");
+		System.out.println(city);
+
+		// Get State
+		String state = (String) itemObject.get("State");
+		System.out.println(state);
+
+		// Get Pincode
+		String pincode = (String) itemObject.get("Pincode");
+		System.out.println(pincode);
+
+		// Get Phone
+		String phone = (String) itemObject.get("Phone");
+		System.out.println(phone);
+
+//			double value = getValue(weight, price);
+//			System.out.println("total Value :" + value);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public AddressModel addAddress() {
+
+		AddressModel addressmodel = new AddressModel();
+		String[] addresses = new String[] { "AddressBook" };
+		JSONObject finalObject = new JSONObject();
+		System.out.print("Enter number of addresses you want to store");
+		int choice = Utility.inputInteger();
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < addresses.length; i++) {
+			// types of every inventory
+			while (choice != 0) {
+				// array to store data
+				JSONObject jsonObject = new JSONObject();
+				System.out.print("Enter FirstName: ");
+				jsonObject.put("FirstName", Utility.inputString());
+				System.out.print("Enter LastName: ");
+				jsonObject.put("LastName", Utility.inputString());
+				System.out.print("Enter Address: ");
+				jsonObject.put("Address", Utility.inputString());
+				System.out.print("Enter City: ");
+				jsonObject.put("City", Utility.inputString());
+				System.out.print("Enter State: ");
+				jsonObject.put("State", Utility.inputString());
+				System.out.print("Enter Pincode: ");
+				jsonObject.put("Pincode", Utility.inputString());
+				System.out.print("Enter Phone: ");
+				jsonObject.put("Phone", Utility.inputString());
+
+				JSONObject person = new JSONObject();
+				person.put("AddressBook", jsonObject);
+				array.add(person);
+				finalObject.put("AddressBook", array);
+				choice--;
+			}
+		}
+
+		try (BufferedWriter br = new BufferedWriter(
+				new FileWriter("/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/AddressBook.json"))) {
+			br.write(array.toJSONString());
+			System.out.println(array);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return addressmodel;
+
+	}
+
+	public static void addData() throws IOException, ParseException {
+		FileReader fileOld=new FileReader("/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/AddressBook.json");
+		JSONParser jsonParser = new JSONParser();
+		JSONArray array = new JSONArray();
+		JSONArray arrayOne = new JSONArray();
+		
+		AddressServiceImplementation a = new AddressServiceImplementation();
+		a.addAddress();
+		
+		FileReader fileNew=new FileReader("/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/AddressBook.json");
+		
+			Object obj = jsonParser.parse(fileOld);
+			array.add(obj);
+			
+			arrayOne.add(array);
+			
+			System.out.println(array);
+			
+			FileWriter file=new FileWriter("/home/admin1/bridgelabz/objectorientedprograms/AddressBookProblem/AddressBook.json");
+			file.write(arrayOne.toJSONString());
+			file.flush();	
+
+		}
+
+	public static void main(String[] args) throws IOException, ParseException {
+		AddressServiceImplementation a = new AddressServiceImplementation();
+//		a.addAddress();
+		a.readAddress();
+		addData();
+
+	}
+}

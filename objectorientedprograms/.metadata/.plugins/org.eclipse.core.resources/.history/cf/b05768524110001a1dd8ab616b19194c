@@ -1,0 +1,5 @@
+package com.blblz.deck.service;
+
+public interface DeckInterface {
+
+}

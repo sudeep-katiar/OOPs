@@ -4,6 +4,11 @@ public class DeckModel {
 	private String suit;
 	private String value;
 
+	public DeckModel(String suit, String value) {
+	        this.suit = suit;
+	        this.value = value;
+	    }
+
 	public String getSuit() {
 		return suit;
 	}

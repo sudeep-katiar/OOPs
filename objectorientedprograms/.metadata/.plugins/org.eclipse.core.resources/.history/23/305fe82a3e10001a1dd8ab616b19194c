@@ -1,0 +1,12 @@
+package com.blblz.deck.controller;
+
+public class DeckMain {
+public static void main(String[] args) {
+    	
+    	DeckInterface deckImpl=new DeckImpl();
+    	deckImpl.intializeCard();
+    	deckImpl.shuffleCard();
+    	deckImpl.displayCard();
+    }
+
+}

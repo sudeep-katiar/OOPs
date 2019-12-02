@@ -1,0 +1,5 @@
+package com.blblz.commercial.serviceimplementation;
+
+public class StockAccountServiceImpl {
+
+}

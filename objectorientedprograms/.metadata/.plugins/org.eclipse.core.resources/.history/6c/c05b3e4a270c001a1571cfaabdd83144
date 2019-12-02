@@ -1,0 +1,9 @@
+package com.blblz.idm.controller;
+
+public class InventoryJson {
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args)
+	{
+		
+	}
+}

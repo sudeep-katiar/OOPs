@@ -1,0 +1,131 @@
+package com.blblz.stockmanagement.serviceimplementation;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import com.blblz.stockmanagement.repository.StockRepository;
+import com.blblz.stockmanagement.service.StockService;
+
+public class StockServiceImplementation implements StockService {
+	static JSONParser jsonParser = new JSONParser();
+	static JSONObject jsonObject = new JSONObject();
+	int n;
+
+	@SuppressWarnings("unchecked")
+	public void add(String stockname, int numberofshare, long stockprice) {
+		JSONObject object = new JSONObject();
+
+		// write data here
+		object = StockRepository.json();
+		JSONArray arr = new JSONArray();
+		//System.out.println(arr);
+		arr = (JSONArray) object.get("Stock");
+     		//arr.add(obj2);
+		JSONObject obj2 = new JSONObject();
+		obj2.put("stock name", stockname);
+		obj2.put("number of shares", numberofshare);
+		obj2.put("stock price", stockprice);
+		obj2.put("total", (numberofshare * stockprice));
+		n=(int) (n+(numberofshare * stockprice));
+		obj2.put("all total", n);
+		arr.add(obj2);
+		//arr.add(obj2);
+		try (PrintWriter pw = new PrintWriter("jsonfolder/stock.json")) {
+			pw.write(object.toString());
+			pw.flush();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		System.out.println(object.toString());
+	}
+
+	
+//	public void add() 
+//	{
+////		StockRepository stockread=new StockRepository();
+////		stockread.json();
+//		StockModel model=new StockModel();
+//		
+//		
+//		try {
+//			JSONObject object=new JSONObject();
+//			JSONParser parser =new JSONParser();
+//			
+//			FileReader read=new FileReader("jsonfolder/stock.json");
+//			JSONObject obj=(JSONObject) parser.parse(read);
+//			System.out.println(obj);
+//			
+//			
+//		System.out.println("enter name");
+//		String stockname = Utility.inputString();
+//		model.setStockname(stockname);
+//		String stockName=model.getStockname();
+//		object.put("stockname",stockname);
+//		
+//		System.out.println("enter number of shares");
+//		int numberofshare = Utility.inputInteger();
+//		model.setNumberofshare(numberofshare);
+//		int noOfShare=model.getNumberofshare();
+//		object.put("numberofshare",noOfShare);
+//		
+//		System.out.println("enter share price ");
+//		long stockprice = Utility.inputLong();
+//		model.setShareprice(stockprice);
+//		long stockPrice=model.getShareprice();
+//		object.put("stockprice",stockPrice);
+//		
+//		
+//		PrintWriter pw = new PrintWriter("jsonfolder/stock.json");
+//			pw.write(object.toString());
+//			pw.flush();
+//			
+//			FileReader read1=new FileReader("jsonfolder/stock.json");
+//			JSONObject obj1=(JSONObject) parser.parse(read1);
+//			System.out.println(obj1);
+//			
+//		PrintWriter pw1 = new PrintWriter("jsonfolder/stock.json");
+//				pw1.write(object.toString());
+//				pw1.write(obj1.toJSONString());
+//				pw1.flush();
+//			
+//		} catch (IOException | ParseException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+	
+	
+	@SuppressWarnings("rawtypes")
+	public void stockreport() {
+		JSONObject jsonobject=new JSONObject();
+		//to read jsonobject 
+		jsonobject=StockRepository.json();
+		
+		JSONArray array=new JSONArray();
+		array=(JSONArray)jsonobject.get("Stock");
+		JSONObject obj = new JSONObject();
+		Iterator itr=array.iterator();
+		while(itr.hasNext())
+		{
+			System.out.println("Stock Name\tNo.of Stock\tStock Price\tStock Value\tTotal Value");
+		obj=(JSONObject)itr.next();
+	     System.out.print(obj.get("stock name").toString()+"\t\t");
+	     System.out.print(obj.get("number of shares").toString()+"\t\t");
+	     System.out.print(obj.get("stock price").toString()+"\t\t");
+	     System.out.print(obj.get("total").toString()+"\t\t");
+	     System.out.print(obj.get("all total").toString()+"\t\n");
+		}
+
+	}
+	
+	public void totalstockvalue()
+	{
+		
+	}
+
+}

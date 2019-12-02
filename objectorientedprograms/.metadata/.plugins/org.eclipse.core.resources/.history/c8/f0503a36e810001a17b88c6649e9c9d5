@@ -1,0 +1,58 @@
+package com.blblz.clinique.model;
+
+public class Patient {
+	private String name;
+	private String mobNumber;
+	private int age;
+	private int id;
+
+	public Patient() {
+
+	}
+
+	public Patient(String name, String mobNo, int age, int id) {
+		this.setName(name);
+		this.setMobNumber(mobNo);
+		this.setAge(age);
+		this.setId(id);
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%-15s %-10d  %-15s %15d\n", name, id, mobNumber, age));
+		return sb.toString();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobNumber() {
+		return mobNumber;
+	}
+
+	public void setMobNumber(String mobNumber) {
+		this.mobNumber = mobNumber;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+}

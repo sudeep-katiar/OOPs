@@ -1,0 +1,11 @@
+package com.blblz.stockmanagement.service;
+
+import java.io.File;
+
+import org.json.simple.JSONObject;
+
+public interface StockService {
+	public void add(String name, double price, double share);
+	public void stockreport();
+
+}

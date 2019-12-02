@@ -1,0 +1,5 @@
+package com.blblz.stockmanagement.repository;
+
+public class StockRepository {
+
+}
